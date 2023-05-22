@@ -1,169 +1,415 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <title>Jan Mrkva</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-  <link rel="stylesheet" href="main.css">
+  <title>Životopis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Dva stĺpce */
+      grid-template-rows: auto auto auto; /* Tri riadky s automatickou výškou */
+      grid-gap: 10px; /* Medzera medzi jednotlivými prvkami */
+      grid-template-areas:
+        "informacie vzdelanie"
+        "skusenosti skusenosti"
+        "schopnosti jazyky";
+    }
+
+    
+
+   
+    
+    .grid-item {
+      background-color: #f2f2f2;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .informacie {
+      grid-area: informacie;
+    }
+    
+    .vzdelanie {
+      grid-area: vzdelanie;
+    }
+    
+    .skusenosti {
+      grid-area: skusenosti;
+    }
+    
+    .schopnosti {
+      grid-area: schopnosti;
+    }
+    
+    .jazyky {
+      grid-area: jazyky;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333333;
+      padding: 20px;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .header h1 {
+      font-size: 80px;
+      color: #008080;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .header .contact-info {
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-info a {
+      color: #333333;
+      text-decoration: none;
+      margin-left: 10px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-info i {
+      margin-right: 5px;
+    }
+    
+    .section {
+      margin-bottom: 5px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 30px;
+      box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+      
+    }
+
+    .section1 {
+      margin-bottom: 40px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-heading {
+      color: #008080;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      margin-bottom: 30px;
+      border-collapse: collapse;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+      border-radius: 5px;
+    }
+    
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #dddddd;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    
+    .section-divider {
+      width: 100%;
+      height: 4px;
+      background-color: #008080;
+      margin-bottom: 10px;
+    }
+    
+    .section-divider:before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background-color: #008080;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    
+    .section-divider:after {
+      content: '';
+      width: calc(100% - 30px);
+      height: 2px;
+      background-color: #008080;
+      display: inline-block;
+      margin-top: 45px;
+      margin-left: 3px;
+    }
+    
+    .section-heading {
+      font-size: 24px;
+      color: #008080;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    
+    .section-content {
+      display: flex;
+      align-items: center;
+    }
+    
+    .section-content img {
+      max-width: 200px;
+      border-radius: 5px;
+      margin-right: 20px;
+    }
+    
+    .section-content .details {
+      flex: 1;
+    }
+    
+    .details p {
+      margin-bottom: 10px;
+    }
+    
+    .skills {
+      margin-top: 20px;
+    }
+    
+    .skills ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .skills li {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .skills .skill-badge {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #008080;
+      color: #ffffff;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    
+    .languages {
+      margin-top: 20px;
+    }
+    
+    .languages ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .languages li {
+      margin-bottom: 10px;
+    }
+    
+    .languages .language-name {
+      font-weight: bold;
+    }
+    
+    .languages .language-level {
+      color: #666666;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease-out;
+    }
+
+    img {
+      margin-top: 20px;
+      margin-left: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+
+
 </head>
+<body>
+    <div class="header">
+        <h1>Životopis</h1>
+        <div class="contact-info">
+        <a href="tel:0948235445"><i class="fas fa-phone"></i>0948 235 445</a>
+        <a href="mailto:emagallovicova.com"><i class="fas fa-envelope"></i>emagallovicova@gmail.com</a>
+        <a href="https://github.com/ellihrot" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+        </div>
+      </div>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
-
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-    <a class="navbar-brand" href="#">Clarence Taylor</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#experience">Experience</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#education">Education</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#skills">Skills</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#interests">Interests</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
-        </li>
-      </ul>
+  <div class="grid-container">
+    <div class="grid-item informacie">
+        <div class="section">
+            <div class="section-divider"></div>
+            <h2 class="section-heading fade-in">Osobné informácie</h2>
+            <div class="section-content fade-in">
+              <img src="profile.png" alt="Profilová fotografia">
+              <div class="details">
+                <p>Ema Gallovičová</p>
+                <p>11. októbra 2004</p>
+                <p>Boženy Nemcovej, Poprad - Spišská Sobota</p>
+              </div>
+            </div>
+          </div>
     </div>
-  </nav>
-
-  <div class="container mt-5">
-
-    <section id="about">
-      <div class="jumbotron">
-        <h1>Jan Mrkva</h1>
-        <div class="subheading">
-          3542 BERRY STREET · CHEYENNE WELLS, CO 80810 · (317) 585-8468 · NAME@EMAIL.COM
+    <div class="grid-item vzdelanie">
+        <div class="grid-item">
+            <div class="section">
+              <div class="section-divider"></div>
+              <h2 class="section-heading fade-in">Vzdelanie</h2>
+              <div class="section-content fade-in">
+                <img src="logo.jpg" alt="logo">
+                <div class="details">
+                  <p> <b> Základná škola:</b> Spojená cirkevná škola, Jána Pavla II., Poprad</p>
+                  <p> <b> Stredná škola:</b> Súkromná stredná odborná škola, ul. 29 augusta, Poprad </p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="grid-item skusenosti">
+        <div class="section">
+            <div class="section-divider"></div>
+            <h2 class="section-heading fade-in">Pracovné skúsenosti</h2>
+              <div class="section-content fade-in">
+                <div class="details">
+                  <table>
+                  <tr>
+                    <th>Firma</th>
+                    <td>CK Tatry Travelia s.r.o</td>
+                  </tr>
+                  <tr>
+                    <th>Pozícia</th>
+                    <td>Animátor</td>
+                  </tr>
+                  <tr>
+                    <th>Dátum zamestnania</th>
+                    <td>máj 2021 - jún 2022</td>
+                  </tr>
+                  <tr>
+                    <th>Popis práce</th>
+                    <td>Plánovanie a organizovanie aktivít a programov pre deti rôznych vekových
+                      skupín. Vytváranie kreatívnych a zábavných hier, ktoré zvyšujú záujem detí a
+                      podporujú ich rast a vývoj. Vedenie a koordinácia tímu animátorov a pomáhanie
+                      im s plánovaním a organizáciou aktivít. Zabezpečenie bezpečnosti detí a
+                      dohliadanie na ich správanie počas aktivít</td>
+                  </tr>
+                </table>
+  
+                <table>
+                  <tr>
+                    <th>Firma</th>
+                    <td>Leviathan</td>
+                  </tr>
+                  <tr>
+                    <th>Pozícia</th>
+                    <td>Obsluha</td>
+                  </tr>
+                  <tr>
+                    <th>Dátum zamestnania</th>
+                    <td>jún 2022 - október 2022</td>
+                  </tr>
+                  <tr>
+                    <th>Popis práce</th>
+                    <td>Príprava jedál a nápojov a rýchle poskytovanie ich zákazníkom. Zabezpečenie
+                      čistoty a poriadku v prevádzke, vrátane čistenia a údržby zariadenia a zariadení
+                      na prípravu jedál. Vedenie peňažnej hotovosti a zabezpečenie presného
+                      účtovania objednávok a platidiel. Vysvetľovanie ponuky menu a odporúčanie
+                      produktov zákazníkom</td>
+                  </tr>
+                </table>
+  
+                <table>
+                  <tr>
+                    <th>Firma</th>
+                    <td>Snowpark Lučivná</td>
+                  </tr>
+                  <tr>
+                    <th>Pozícia</th>
+                    <td>Lyžiarsky inštruktor</td>
+                  </tr>
+                  <tr>
+                    <th>Dátum zamestnania</th>
+                    <td>november 2022 - apríl 2023</td>
+                  </tr>
+                  <tr>
+                    <th>Popis práce</th>
+                    <td>Vedenie a organizovanie skupinových aj individuálnych lyžiarskych lekcií pre
+                      rôzne vekové kategórie a úrovne zručností lyžiarov. Bezpečné a efektívne
+                      vedenie lyžiarskych kurzov a tréningov, vysvetľovanie techniky a správneho
+                      správania sa na svahu.</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="grid-item schopnosti"> <div class="section">
+        <div class="section-divider"></div>
+        <h2 class="section-heading fade-in">Schopnosti a znalosti</h2>
+        <div class="section-content fade-in skills">
+          <ul>
+            <li><span class="skill-badge">Microsoft Word</span></li>
+            <li><span class="skill-badge">Microsoft Excel</span></li>
+            <li><span class="skill-badge">Adobe Photoshop</span></li>
+            <li><span class="skill-badge">Adobe Premiere Pro</span></li>
+            <li><span class="skill-badge">Adobe Illustrator</span></li>
+            <li><span class="skill-badge">Adobe InDesign</span></li>
+            <li><span class="skill-badge">HTML</span></li>
+            <li><span class="skill-badge">CSS</span></li>
+            <li><span class="skill-badge">Kali Linux</span></li>
+            <li><span class="skill-badge">Debian Linux</span></li>
+          </ul>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat sapien ac facilisis efficitur. Integer faucibus
-          eros congue arcu volutpat, et consequat lectus placerat. Donec pellentesque turpis sit amet elit rutrum tincidunt.
-          Etiam eget rutrum dolor. Curabitur auctor vel purus in faucibus. Fusce pellentesque eros venenatis, suscipit ex
-          quis, facilisis nunc. In in turpis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dolor
-          mi, rhoncus sed lorem eget, feugiat mattis risus. Praesent nibh velit, dapibus vitae nulla ut, tempus accumsan
-          ipsum.
-        </p>
-      </div>
-    </section>
-
-    <section id="experience">
-      <h2>Experience</h2>
-      <div class="d-flex flex-column flex-md-row justify-content-between mb-3">
-        <div>
-          <h3>Senior Web Developer</h3>
-          <div class="subheading">Intelitec Solutions</div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat sapien ac facilisis efficitur. Integer faucibus
-            eros congue arcu volutpat, et consequat lectus placerat. Donec pellentesque turpis sit amet elit rutrum tincidunt.
-            Etiam eget rutrum dolor. Curabitur auctor vel purus in faucibus. Fusce pellentesque eros venenatis, suscipit
-            ex quis, facilisis nunc. In in turpis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            dolor mi, rhoncus sed lorem eget, feugiat mattis risus. Praesent nibh velit, dapibus vitae nulla ut, tempus accumsan
-            ipsum.
-          </p>
-        </div>
-        <div class="date text-md-right">March 2013 - Present</div>
-      </div>
-      <div class="d-flex flex-column flex-md-row justify-content-between mb-3">
-        <div>
-          <h3>Web Developer</h3>
-          <div class="subheading">Intelitec Solutions</div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat sapien ac facilisis efficitur. Integer faucibus
-            eros congue arcu volutpat, et consequat lectus placerat. Donec pellentesque turpis sit amet elit rutrum tincidunt.
-            Etiam eget rutrum dolor. Curabitur auctor vel purus in faucibus. Fusce pellentesque eros venenatis, suscipit
-            ex quis, facilisis nunc. In in turpis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            dolor mi, rhoncus sed lorem eget, feugiat mattis risus. Praesent nibh velit, dapibus vitae nulla ut, tempus accumsan
-            ipsum.
-          </p>
-        </div>
-        <div class="date text-md-right">December 2011 - March 2013</div>
-      </div>
-      <div class="d-flex flex-column flex-md-row justify-content-between mb-3">
-        <div>
-          <h3>Junior Web Designer</h3>
-          <div class="subheading">SHOUT!</div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat sapien ac facilisis efficitur. Integer faucibus
-            eros congue arcu volutpat, et consequat lectus placerat. Donec pellentesque turpis sit amet elit rutrum tincidunt.
-            Etiam eget rutrum dolor. Curabitur auctor vel purus in faucibus. Fusce pellentesque eros venenatis, suscipit
-            ex quis, facilisis nunc. In in turpis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            dolor mi, rhoncus sed lorem eget, feugiat mattis risus. Praesent nibh velit, dapibus vitae nulla ut, tempus accumsan
-            ipsum.
-          </p>
-        </div>
-        <div class="date text-md-right">July 2010 - December 2011</div>
-      </div>
-    </section>
-
-    <section id="education">
-      <h2>Education</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat sapien ac facilisis efficitur. Integer faucibus
-        eros congue arcu volutpat, et consequat lectus placerat. Donec pellentesque turpis sit amet elit rutrum tincidunt.
-        Etiam eget rutrum dolor. Curabitur auctor vel purus in faucibus. Fusce pellentesque eros venenatis, suscipit ex quis,
-        facilisis nunc. In in turpis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dolor mi,
-        rhoncus sed lorem eget, feugiat mattis risus. Praesent nibh velit, dapibus vitae nulla ut, tempus accumsan ipsum.
-      </p>
-    </section>
-
-    <section id="skills">
-      <h2>Skills</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat sapien ac facilisis efficitur. Integer faucibus
-        eros congue arcu volutpat, et consequat lectus placerat. Donec pellentesque turpis sit amet elit rutrum tincidunt.
-        Etiam eget rutrum dolor. Curabitur auctor vel purus in faucibus. Fusce pellentesque eros venenatis, suscipit ex quis,
-        facilisis nunc. In in turpis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dolor mi,
-        rhoncus sed lorem eget, feugiat mattis risus. Praesent nibh velit, dapibus vitae nulla ut, tempus accumsan ipsum.
-      </p>
-    </section>
-
-    <section id="contact">
-      <h2>Interests</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat sapien ac facilisis efficitur. Integer faucibus
-        eros congue arcu volutpat, et consequat lectus placerat. Donec pellentesque turpis sit amet elit rutrum tincidunt.
-        Etiam eget rutrum dolor. Curabitur auctor vel purus in faucibus. Fusce pellentesque eros venenatis, suscipit ex quis,
-        facilisis nunc. In in turpis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dolor mi,
-        rhoncus sed lorem eget, feugiat mattis risus. Praesent nibh velit, dapibus vitae nulla ut, tempus accumsan ipsum.
-      </p>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <form>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" required>
-        </div>
-        <div class="form-group">
-          <label for="msg">Message:</label>
-          <textarea class="form-control" rows="5" id="msg"></textarea>
-        </div>
-        <button type="submit" class="btn btn-dark">Submit</button>
-      </form>
-    </section>
-
+      </div></div>
+    <div class="grid-item jazyky">
+        <div class="section">
+            <div class="section-divider"></div>
+              <h2 class="section-heading fade-in">Jazyky</h2>
+              <div class="section-content fade-in languages">
+                <ul>
+                  <li>
+                    <span class="language-name">Angličtina</span>
+                    <span class="language-level">Pokročilý</span>
+                  </li>
+                  <li>
+                    <span class="language-name">Nemečtina</span>
+                    <span class="language-level">Začiatočník</span>
+                  </li>
+                  <li>
+                    <span class="language-name">Španielčina</span>
+                    <span class="language-level">Začiatočník</span>
+                  </li>
+                </ul>
+              </div>
+          </div>
+    </div>
   </div>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="main.js"></script>
-
 </body>
-
 </html>

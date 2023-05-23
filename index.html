@@ -1,415 +1,498 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Životopis</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <style>
-    .grid-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr; /* Dva stĺpce */
-      grid-template-rows: auto auto auto; /* Tri riadky s automatickou výškou */
-      grid-gap: 10px; /* Medzera medzi jednotlivými prvkami */
-      grid-template-areas:
-        "informacie vzdelanie"
-        "skusenosti skusenosti"
-        "schopnosti jazyky";
-    }
-
-    
-
-   
-    
-    .grid-item {
-      background-color: #f2f2f2;
-      padding: 20px;
-      text-align: center;
-    }
-    
-    .informacie {
-      grid-area: informacie;
-    }
-    
-    .vzdelanie {
-      grid-area: vzdelanie;
-    }
-    
-    .skusenosti {
-      grid-area: skusenosti;
-    }
-    
-    .schopnosti {
-      grid-area: schopnosti;
-    }
-    
-    .jazyky {
-      grid-area: jazyky;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      color: #333333;
-      padding: 20px;
-    }
-    
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-    
-    .header h1 {
-      font-size: 80px;
-      color: #008080;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    
-    .header .contact-info {
-      display: flex;
-      align-items: center;
-    }
-    
-    .contact-info a {
-      color: #333333;
-      text-decoration: none;
-      margin-left: 10px;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-    }
-    
-    .contact-info i {
-      margin-right: 5px;
-    }
-    
-    .section {
-      margin-bottom: 5px;
-      padding: 20px;
-      background-color: #ffffff;
-      border-radius: 30px;
-      box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
-      position: relative;
-      
-    }
-
-    .section1 {
-      margin-bottom: 40px;
-      padding: 20px;
-      background-color: #ffffff;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .section-heading {
-      color: #008080;
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    table {
-      width: 100%;
-      margin-bottom: 30px;
-      border-collapse: collapse;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      background-color: #ffffff;
-      border-radius: 5px;
-    }
-    
-    th, td {
-      padding: 8px;
-      text-align: left;
-      border-bottom: 1px solid #dddddd;
-    }
-    
-    th {
-      background-color: #f2f2f2;
-      font-weight: bold;
-    }
-    
-    .section-divider {
-      width: 100%;
-      height: 4px;
-      background-color: #008080;
-      margin-bottom: 10px;
-    }
-    
-    .section-divider:before {
-      content: '';
-      width: 20px;
-      height: 2px;
-      background-color: #008080;
-      display: inline-block;
-      vertical-align: middle;
-      margin-right: 10px;
-    }
-    
-    .section-divider:after {
-      content: '';
-      width: calc(100% - 30px);
-      height: 2px;
-      background-color: #008080;
-      display: inline-block;
-      margin-top: 45px;
-      margin-left: 3px;
-    }
-    
-    .section-heading {
-      font-size: 24px;
-      color: #008080;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
-    
-    .section-content {
-      display: flex;
-      align-items: center;
-    }
-    
-    .section-content img {
-      max-width: 200px;
-      border-radius: 5px;
-      margin-right: 20px;
-    }
-    
-    .section-content .details {
-      flex: 1;
-    }
-    
-    .details p {
-      margin-bottom: 10px;
-    }
-    
-    .skills {
-      margin-top: 20px;
-    }
-    
-    .skills ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-wrap: wrap;
-    }
-    
-    .skills li {
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
-    
-    .skills .skill-badge {
-      display: inline-block;
-      padding: 5px 10px;
-      background-color: #008080;
-      color: #ffffff;
-      border-radius: 5px;
-      font-size: 14px;
-    }
-    
-    .languages {
-      margin-top: 20px;
-    }
-    
-    .languages ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    .languages li {
-      margin-bottom: 10px;
-    }
-    
-    .languages .language-name {
-      font-weight: bold;
-    }
-    
-    .languages .language-level {
-      color: #666666;
-    }
-    
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .fade-in {
-      animation: fadeIn 1s ease-out;
-    }
-
-    img {
-      margin-top: 20px;
-      margin-left: 10px;
-      margin-bottom: 20px;
-    }
-  </style>
-
-
-</head>
-<body>
-    <div class="header">
-        <h1>Životopis</h1>
-        <div class="contact-info">
-        <a href="tel:0948235445"><i class="fas fa-phone"></i>0948 235 445</a>
-        <a href="mailto:emagallovicova.com"><i class="fas fa-envelope"></i>emagallovicova@gmail.com</a>
-        <a href="https://github.com/ellihrot" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Creative CV</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/aos.css?ver=1.1.0" rel="stylesheet">
+    <link href="css/bootstrap.min.css?ver=1.1.0" rel="stylesheet">
+    <link href="css/main.css?ver=1.1.0" rel="stylesheet">
+    <noscript>
+      <style type="text/css">
+        [data-aos] {
+            opacity: 1 !important;
+            transform: translate(0) scale(1) !important;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body id="top">
+    <header>
+      <div class="profile-page sidebar-collapse">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-primary" color-on-scroll="400">
+          <div class="container">
+            <div class="navbar-translate"><a class="navbar-brand" href="#" rel="tooltip">Resume</a>
+              <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-bar bar1"></span><span class="navbar-toggler-bar bar2"></span><span class="navbar-toggler-bar bar3"></span></button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navigation">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link smooth-scroll" href="#about">O mne</a></li>
+                <li class="nav-item"><a class="nav-link smooth-scroll" href="#skill">Zručnosti</a></li>
+                <li class="nav-item"><a class="nav-link smooth-scroll" href="#portfolio">Portfólo</a></li>
+                <li class="nav-item"><a class="nav-link smooth-scroll" href="#experience">Skúsenosti</a></li>
+                <li class="nav-item"><a class="nav-link smooth-scroll" href="#contact">Kontakt</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <div class="page-content">
+      <div>
+<div class="profile-page">
+  <div class="wrapper">
+    <div class="page-header page-header-small" filter-color="green">
+      <div class="page-header-image" data-parallax="true" style="background-image: url('images/cc-bg-1.jpg')"></div>
+      <div class="container">
+        <div class="content-center">
+          <div class="cc-profile-image"><a href="#"><img src="images/profile.png" alt="Image"/></a></div>
+          <div class="h2 title">Ema Gallovičová</div>
+          <p class="category text-white">Grafický dizajnér, Fotograf</p><a class="btn btn-primary smooth-scroll mr-2" href="#contact" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Kontaktujte ma</a>
         </div>
       </div>
-
-  <div class="grid-container">
-    <div class="grid-item informacie">
-        <div class="section">
-            <div class="section-divider"></div>
-            <h2 class="section-heading fade-in">Osobné informácie</h2>
-            <div class="section-content fade-in">
-              <img src="profile.png" alt="Profilová fotografia">
-              <div class="details">
-                <p>Ema Gallovičová</p>
-                <p>11. októbra 2004</p>
-                <p>Boženy Nemcovej, Poprad - Spišská Sobota</p>
+      <div class="section">
+        <div class="container">
+          <div class="button-container"><a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Sledujte ma na Facebooku"><i class="fa fa-facebook"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Sledujte ma na Instagrame"><i class="fa fa-instagram"></i></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section" id="about">
+  <div class="container">
+    <div class="card" data-aos="fade-up" data-aos-offset="10">
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <div class="card-body">
+            <div class="h4 mt-0 title">O mne</div>
+            <p>Ahojte! Volám sa Ema Gallovičová, mometálne študujem na Súkromnej strednej odbornej škole v Poprade informatiku.</p>
+            <p>Vo voľnom čase rada navrhuje grafické dizajny. Taktiež ma zaujíma inetrnetová bezpečnosť a sieťové systémy.</p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="card-body">
+            <div class="h4 mt-0 title">Záklané info</div>
+            <div class="row">
+              <div class="col-sm-4"><strong class="text-uppercase">Vek:</strong></div>
+              <div class="col-sm-8">18</div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
+              <div class="col-sm-8">emagallovicova@gmail.com</div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-4"><strong class="text-uppercase">Telefónne číslo:</strong></div>
+              <div class="col-sm-8">0948 235 445</div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-4"><strong class="text-uppercase">Adresa:</strong></div>
+              <div class="col-sm-8">Boženy Nemcovej, Poprad-Spišská Sobota</div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-4"><strong class="text-uppercase">Jazyky:</strong></div>
+              <div class="col-sm-8">Slovenský, Anglický</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section" id="skill">
+  <div class="container">
+    <div class="h4 text-center mb-4 title">Zručnosti</div>
+    <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="progress-container progress-primary"><span class="progress-badge">HTML</span>
+              <div class="progress">
+                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"></div><span class="progress-value">20%</span>
               </div>
             </div>
           </div>
+          <div class="col-md-6">
+            <div class="progress-container progress-primary"><span class="progress-badge">CSS</span>
+              <div class="progress">
+                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 15%;"></div><span class="progress-value">15%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="progress-container progress-primary"><span class="progress-badge">Adobe Photoshop</span>
+              <div class="progress">
+                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div><span class="progress-value">50%</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="progress-container progress-primary"><span class="progress-badge">Adobe Illustrator</span>
+              <div class="progress">
+                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="progress-container progress-primary"><span class="progress-badge">Adobe InDesign</span>
+              <div class="progress">
+                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;"></div><span class="progress-value">45%</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="progress-container progress-primary"><span class="progress-badge">Kali Linux</span>
+              <div class="progress">
+                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"></div><span class="progress-value">20%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="grid-item vzdelanie">
-        <div class="grid-item">
-            <div class="section">
-              <div class="section-divider"></div>
-              <h2 class="section-heading fade-in">Vzdelanie</h2>
-              <div class="section-content fade-in">
-                <img src="logo.jpg" alt="logo">
-                <div class="details">
-                  <p> <b> Základná škola:</b> Spojená cirkevná škola, Jána Pavla II., Poprad</p>
-                  <p> <b> Stredná škola:</b> Súkromná stredná odborná škola, ul. 29 augusta, Poprad </p>
+  </div>
+</div>
+<div class="section" id="portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <div class="h4 text-center mb-4 title">Portfólio</div>
+        <div class="nav-align-center">
+          <ul class="nav nav-pills nav-pills-primary" role="tablist">
+            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#graphic-design" role="tablist"><i class="fa fa-laptop" aria-hidden="true"></i></a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Photography" role="tablist"><i class="fa fa-camera" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="tab-content gallery mt-5">
+      <div class="tab-pane active" id="graphic-design">
+        <div class="ml-auto mr-auto">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#graphic-design">
+                  <figure class="cc-effect"><img src="images/kyberlon.png" alt="Image"/>
+                    <figcaption>
+                      <div class="h4">Logo</div>
+                      <p>Grafický dizajn</p>
+                    </figcaption>
+                  </figure></a></div>
+              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#graphic-design">
+                  <figure class="cc-effect"><img src="images/billboard.png" alt="Image"/>
+                    <figcaption>
+                      <div class="h4">Billboard</div>
+                      <p>Grafický dizajn</p>
+                    </figcaption>
+                  </figure></a></div>
+            </div>
+            <div class="col-md-6">
+              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#graphic-design">
+                  <figure class="cc-effect"><img src="images/mockup5.png" alt="Image"/>
+                    <figcaption>
+                      <div class="h4">Brožúra</div>
+                      <p>Grafický dizajn</p>
+                    </figcaption>
+                  </figure></a></div>
+              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#graphic-design">
+                  <figure class="cc-effect"><img src="images/posty.png" alt="Image"/>
+                    <figcaption>
+                      <div class="h4">Ig posty</div>
+                      <p>Grafický dizajn</p>
+                    </figcaption>
+                  </figure></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-pane" id="Photography" role="tabpanel">
+        <div class="ml-auto mr-auto">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#Photography">
+                  <figure class="cc-effect"><img src="images/mach.JPG" alt="Image"/>
+                    <figcaption>
+                      <div class="h4">Nature Photoshoot</div>
+                      <p>Fotografia</p>
+                    </figcaption>
+                  </figure></a></div>
+              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#Photography">
+                  <figure class="cc-effect"><img src="images/hlad.png" alt="Image"/>
+                    <figcaption>
+                      <div class="h4">Cat Photoshoot</div>
+                      <p>Fotografia</p>
+                    </figcaption>
+                  </figure></a></div>
+            </div>
+            <div class="col-md-6">
+              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#Photography">
+                  <figure class="cc-effect"><img src="images/priroda.png" alt="Image"/>
+                    <figcaption>
+                      <div class="h4">Nízke Tatry Photoshoot</div>
+                      <p>Fotografia</p>
+                    </figcaption>
+                  </figure></a></div>
+              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#Photography">
+                  <figure class="cc-effect"><img src="images/zapad.JPG" alt="Image"/>
+                    <figcaption>
+                      <div class="h4">Západ slnka Photoshoot</div>
+                      <p>Fotografia</p>
+                    </figcaption>
+                  </figure></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section" id="experience">
+  <div class="container cc-experience">
+    <div class="h4 text-center mb-4 title">Pracovné skúsenosti</div>
+    <div class="card">
+      <div class="row">
+        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+          <div class="card-body cc-experience-header">
+            <p></p>
+            <div class="h5">máj 2021 - jún 2022</div>
+          </div>
+        </div>
+        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+          <div class="card-body">
+            <div class="h5">Animátor</div>
+            <p>Plánovanie a organizovanie aktivít a programov pre deti rôznych vekových
+              skupín. Vytváranie kreatívnych a zábavných hier, ktoré zvyšujú záujem detí a
+              podporujú ich rast a vývoj. Vedenie a koordinácia tímu animátorov a pomáhanie
+              im s plánovaním a organizáciou aktivít. Zabezpečenie bezpečnosti detí a
+              dohliadanie na ich správanie počas aktivít.
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="row">
+        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+          <div class="card-body cc-experience-header">
+            <p></p>
+            <div class="h5">jún 2022 - október 2022</div>
+          </div>
+        </div>
+        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+          <div class="card-body">
+            <div class="h5">Obsluha</div>
+            <p>Príprava jedál a nápojov a rýchle poskytovanie ich zákazníkom. Zabezpečenie
+              čistoty a poriadku v prevádzke, vrátane čistenia a údržby zariadenia a zariadení
+              na prípravu jedál. Vedenie peňažnej hotovosti a zabezpečenie presného
+              účtovania objednávok a platidiel. Vysvetľovanie ponuky menu a odporúčanie
+              produktov zákazníkom.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="row">
+        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+          <div class="card-body cc-experience-header">
+            <p></p>
+            <div class="h5">november 2022 - apríl 2023</div>
+          </div>
+        </div>
+        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+          <div class="card-body">
+            <div class="h5">Lyžiarsky inštruktor</div>
+            <p>Vedenie a organizovanie skupinových aj individuálnych lyžiarskych lekcií pre
+              rôzne vekové kategórie a úrovne zručností lyžiarov. Bezpečné a efektívne
+              vedenie lyžiarskych kurzov a tréningov, vysvetľovanie techniky a správneho
+              správania sa na svahu.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container cc-education">
+    <div class="h4 text-center mb-4 title">Vzdelanie</div>
+    <div class="card">
+      <div class="row">
+        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+          <div class="card-body cc-education-header">
+            <p>2011 - 2020</p>
+            <div class="h5">Spojená cirkevná škola Jána Pavla II.</div>
+          </div>
+        </div>
+        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+          <div class="card-body">
+            <div class="h5">Základné vzdelanie</div>
+            <p class="category">Základná škola</p>
+            <p>Základná škola mi poskytla základné vzdelanie a formovala moju osobnosť.
+              Naučila som sa čítať, písať, počítať a rozvíjať kritické myslenie.
+              Tu som si vytvorila pevné základy pre ďalšie vzdelávanie a rast.
+              Je to miesto, kde som objavila svoju vášeň pre učenie a rozvoj.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="row">
+        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+          <div class="card-body cc-education-header">
+            <p>2020 - 2024</p>
+            <div class="h5">Súkromná stredná odborná škola</div>
+          </div>
+        </div>
+        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+          <div class="card-body">
+            <div class="h5">Stredoškolské vzdelanie</div>
+            <p class="category">Informačné a digitálne technológie</p>
+            <p>Na strednej škole študujem informatiku so zameraním na grafický dizajn, siete a webové stránky.
+              V rámci grafického dizajnu sa naučím tvoriť atraktívne a efektívne grafické prvky.
+              V oblasti sietí sa zameriavam na architektúru a bezpečnostné protokoly.
+              Získavam praktické skúsenosti so správou a konfiguráciou sieťových zariadení.
+              Pri tvorbe webových stránok získavam zručnosti v HTML a CSS.             
+              Tieto skúsenosti ma pripravujú na kariéru v digitálnom svete a vyjadrenie svojej kreativity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section" id="reference">
+  <div class="container cc-reference">
+    <div class="h4 mb-4 text-center title">Certifikáty</div>
+    <div class="card" data-aos="zoom-in">
+      <div class="carousel slide" id="cc-Indicators" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li class="active" data-target="#cc-Indicators" data-slide-to="0"></li>
+          <li data-target="#cc-Indicators" data-slide-to="1"></li>
+          <li data-target="#cc-Indicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-lg-2 col-md-3 cc-reference-header"><img src="images/soc.jpg" alt="Image"/>
+                <div class="h5 pt-2"></div>
+                <p class="category"></p>
+              </div>
+              <div class="col-lg-10 col-md-9">
+                <p> V stredoškolskej odbornej činnosti sme s tímom dosiahli druhé miesto v kategórii Psychológia a pedagogika. Naším projektom bola iniciatíva zameraná na kybernetickú bezpečnosť, kde sme vzdelávali deti a seniorov o hrozbách na internete. Organizovali sme interaktívne workshopy a prednášky, kde sme ich informovali o phishingu, online predátoroch a kyberšikanovaní.</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-lg-2 col-md-3 cc-reference-header"><img src="images/cisco.jpg" alt="Image"/>
+                <div class="h5 pt-2"></div>
+                <p class="category"></p>
+              </div>
+              <div class="col-lg-10 col-md-9">
+                <p> S certifikátom T Essentials: PC Hardware and Software potvrdzujem svoje odborné znalosti v oblasti počítačového hardvéru a softvéru. Umožňuje mi efektívne riešiť problémy s počítačovým vybavením a správne inštalovať a konfigurovať operačné systémy. Táto certifikácia posilňuje moju profesijnú kvalifikáciu v sektore informačných technológií.</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-lg-2 col-md-3 cc-reference-header"><img src="images/Cambridge.png" alt="Image"/>
+                <div class="h5 pt-2"></div>
+                <p class="category"></p>
+              </div>
+              <div class="col-lg-10 col-md-9">
+                <p> Certifikát Cambridge úroveň B2 je medzinárodne uznávaným dôkazom mojej schopnosti hovoriť a porozumieť anglickému jazyku na strednej úrovni. Potvrdzuje moje zručnosti v gramatike, slovnej zásobe a schopnosti komunikovať plynule a s porozumením. Získanie certifikátu ma pripravilo na úspešnú komunikáciu v anglickom jazyku v rôznych profesionálnych a osobných situáciách.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section" id="contact">
+  <div class="cc-contact-information" style="background-image: url('images/staticmap.png')">
+    <div class="container">
+      <div class="cc-contact">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="card mb-0" data-aos="zoom-in">
+              <div class="h4 text-center title">Kontaktujte ma</div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <form action="https://formspree.io/your@email.com" method="POST">
+                      <div class="p pb-3"><strong>Nejaké otázky? </strong></div>
+                      <div class="row mb-3">
+                        <div class="col">
+                          <div class="input-group"><span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                            <input class="form-control" type="text" name="name" placeholder="Meno" required="required"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col">
+                          <div class="input-group"><span class="input-group-addon"><i class="fa fa-file-text"></i></span>
+                            <input class="form-control" type="text" name="Subject" placeholder="Predmet" required="required"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col">
+                          <div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input class="form-control" type="email" name="_replyto" placeholder="E-mail" required="required"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col">
+                          <div class="form-group">
+                            <textarea class="form-control" name="message" placeholder="Tvoja správa" required="required"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <button class="btn btn-primary" type="submit">Odoslať</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <p class="mb-0"><strong>Adresa </strong></p>
+                    <p class="pb-2">Boženy Nemcovej, Poprad - Spišská Sobota</p>
+                    <p class="mb-0"><strong>Telefón</strong></p>
+                    <p class="pb-2">0948 235 445</p>
+                    <p class="mb-0"><strong>Email</strong></p>
+                    <p>emagallovicova@gmail.com</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-    </div>
-    <div class="grid-item skusenosti">
-        <div class="section">
-            <div class="section-divider"></div>
-            <h2 class="section-heading fade-in">Pracovné skúsenosti</h2>
-              <div class="section-content fade-in">
-                <div class="details">
-                  <table>
-                  <tr>
-                    <th>Firma</th>
-                    <td>CK Tatry Travelia s.r.o</td>
-                  </tr>
-                  <tr>
-                    <th>Pozícia</th>
-                    <td>Animátor</td>
-                  </tr>
-                  <tr>
-                    <th>Dátum zamestnania</th>
-                    <td>máj 2021 - jún 2022</td>
-                  </tr>
-                  <tr>
-                    <th>Popis práce</th>
-                    <td>Plánovanie a organizovanie aktivít a programov pre deti rôznych vekových
-                      skupín. Vytváranie kreatívnych a zábavných hier, ktoré zvyšujú záujem detí a
-                      podporujú ich rast a vývoj. Vedenie a koordinácia tímu animátorov a pomáhanie
-                      im s plánovaním a organizáciou aktivít. Zabezpečenie bezpečnosti detí a
-                      dohliadanie na ich správanie počas aktivít</td>
-                  </tr>
-                </table>
-  
-                <table>
-                  <tr>
-                    <th>Firma</th>
-                    <td>Leviathan</td>
-                  </tr>
-                  <tr>
-                    <th>Pozícia</th>
-                    <td>Obsluha</td>
-                  </tr>
-                  <tr>
-                    <th>Dátum zamestnania</th>
-                    <td>jún 2022 - október 2022</td>
-                  </tr>
-                  <tr>
-                    <th>Popis práce</th>
-                    <td>Príprava jedál a nápojov a rýchle poskytovanie ich zákazníkom. Zabezpečenie
-                      čistoty a poriadku v prevádzke, vrátane čistenia a údržby zariadenia a zariadení
-                      na prípravu jedál. Vedenie peňažnej hotovosti a zabezpečenie presného
-                      účtovania objednávok a platidiel. Vysvetľovanie ponuky menu a odporúčanie
-                      produktov zákazníkom</td>
-                  </tr>
-                </table>
-  
-                <table>
-                  <tr>
-                    <th>Firma</th>
-                    <td>Snowpark Lučivná</td>
-                  </tr>
-                  <tr>
-                    <th>Pozícia</th>
-                    <td>Lyžiarsky inštruktor</td>
-                  </tr>
-                  <tr>
-                    <th>Dátum zamestnania</th>
-                    <td>november 2022 - apríl 2023</td>
-                  </tr>
-                  <tr>
-                    <th>Popis práce</th>
-                    <td>Vedenie a organizovanie skupinových aj individuálnych lyžiarskych lekcií pre
-                      rôzne vekové kategórie a úrovne zručností lyžiarov. Bezpečné a efektívne
-                      vedenie lyžiarskych kurzov a tréningov, vysvetľovanie techniky a správneho
-                      správania sa na svahu.</td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-          </div>
-    </div>
-    <div class="grid-item schopnosti"> <div class="section">
-        <div class="section-divider"></div>
-        <h2 class="section-heading fade-in">Schopnosti a znalosti</h2>
-        <div class="section-content fade-in skills">
-          <ul>
-            <li><span class="skill-badge">Microsoft Word</span></li>
-            <li><span class="skill-badge">Microsoft Excel</span></li>
-            <li><span class="skill-badge">Adobe Photoshop</span></li>
-            <li><span class="skill-badge">Adobe Premiere Pro</span></li>
-            <li><span class="skill-badge">Adobe Illustrator</span></li>
-            <li><span class="skill-badge">Adobe InDesign</span></li>
-            <li><span class="skill-badge">HTML</span></li>
-            <li><span class="skill-badge">CSS</span></li>
-            <li><span class="skill-badge">Kali Linux</span></li>
-            <li><span class="skill-badge">Debian Linux</span></li>
-          </ul>
         </div>
-      </div></div>
-    <div class="grid-item jazyky">
-        <div class="section">
-            <div class="section-divider"></div>
-              <h2 class="section-heading fade-in">Jazyky</h2>
-              <div class="section-content fade-in languages">
-                <ul>
-                  <li>
-                    <span class="language-name">Angličtina</span>
-                    <span class="language-level">Pokročilý</span>
-                  </li>
-                  <li>
-                    <span class="language-name">Nemečtina</span>
-                    <span class="language-level">Začiatočník</span>
-                  </li>
-                  <li>
-                    <span class="language-name">Španielčina</span>
-                    <span class="language-level">Začiatočník</span>
-                  </li>
-                </ul>
-              </div>
-          </div>
+      </div>
     </div>
   </div>
-</body>
+</div></div>
+    </div>
+    <footer class="footer">
+      <div class="container text-center"><a class="cc-facebook btn btn-link" href="https://www.facebook.com/profile.php?id=100011378583960"><i class="fa fa-facebook fa-2x " aria-hidden="true"></i></a><a class="cc-instagram btn btn-link" href="https://www.instagram.com/emsgall/"><i class="fa fa-instagram fa-2x " aria-hidden="true"></i></a></div>
+      <div class="h4 title text-center">Ema Gallovičová</div>
+      <div class="text-center text-muted">
+        <p>&copy; Všetky práva vyhradené<br></a></p>
+      </div>
+    </footer>
+    <script src="js/core/jquery.3.2.1.min.js?ver=1.1.0"></script>
+    <script src="js/core/popper.min.js?ver=1.1.0"></script>
+    <script src="js/core/bootstrap.min.js?ver=1.1.0"></script>
+    <script src="js/now-ui-kit.js?ver=1.1.0"></script>
+    <script src="js/aos.js?ver=1.1.0"></script>
+    <script src="scripts/main.js?ver=1.1.0"></script>
+  </body>
 </html>
